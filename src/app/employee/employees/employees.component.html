@@ -1,0 +1,32 @@
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Sr No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Department</th>
+      <th scope="col">Number</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let employee of employees; let i = index">
+    <tr>
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.department }}</td>
+      <td>{{ employee.number }}</td>
+      <td>{{ employee.designation }}</td>
+      <td>
+        <button mat-raised-button color="warn" (click)="openDialog(i)">
+          Delete
+        </button>
+      </td>
+      <td>
+        <button mat-raised-button color="primary" (click)="updateEmployee(i)">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

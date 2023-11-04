@@ -1,0 +1,67 @@
+<form [formGroup]="employeeForm">
+  <label>User Name: </label>
+  <input type="text" formControlName="name" /><br />
+  <span
+    style="color: red; margin-left: 95px"
+    *ngIf="name?.invalid && name?.touched"
+    >Please Enter valid Name</span
+  ><br /><br />
+
+  <label>Select Your Department:&nbsp;&nbsp;&nbsp;</label>
+  <select formControlName="department">
+    <option>Management</option>
+    <option>Human Resources</option>
+    <option>Marketing</option>
+    <option>developers</option>
+    <option>Project management</option></select
+  ><br />
+  <span
+    style="color: red; margin-left: 95px"
+    *ngIf="
+      department &&
+      department.invalid &&
+      (department.dirty || department.touched)
+    "
+    >Please Enter Your Department &nbsp;&nbsp;&nbsp;</span
+  ><br /><br />
+
+  <!-- <mat-slide-toggle>Slide me!</mat-slide-toggle> -->
+
+  <label>Enter Your Number:&nbsp;&nbsp;&nbsp; </label>
+  <input type="text" formControlName="number" /><br /><br />
+  <span
+    style="color: red; margin-left: 95px"
+    *ngIf="number && number.invalid && (number.dirty || number.touched)"
+    >Please Enter a valid Number</span
+  >
+
+  <br /><br />
+
+  <label>Select Your Designation</label>
+  <ng-multiselect-dropdown
+    [settings]="settings"
+    [data]="dropdownData"
+    formControlName="designation"
+  >
+  </ng-multiselect-dropdown
+  ><br /><br />
+
+  <span
+    style="color: red; margin-left: 20px"
+    *ngIf="
+      designation &&
+      designation.invalid &&
+      (designation.dirty || designation.touched)
+    "
+    >Please Choose an Designation</span
+  ><br /><br />
+
+  <button
+    mat-raised-button
+    type="submit"
+    (click)="addEmployee()"
+    [disabled]="employeeForm.invalid ? true : false"
+  >
+    Submit
+  </button>
+</form>
